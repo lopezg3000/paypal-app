@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Modal from './components/modal';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  state = {
+    show: false
+  }
+
+  handleShowModal = () => {
+    this.setState({ show: true });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello PayPal Homepage</h1>
+        <button onClick={this.handleShowModal}>Show Modal</button>
+        <Modal show={this.state.show} />
+      </div>
+    );
+  }
 }
 
 export default App;
