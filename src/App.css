@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+/* will need to remove this once I make a wallet component*/
+
+.show-btn {
+  margin: 75px 0 0;
+}

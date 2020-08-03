@@ -3,10 +3,19 @@ import React, { Component } from 'react'
 
 class Modal extends Component {
     render() {
-        if (!this.props.show) {
+        const { show, onClose } = this.props;
+
+        if (!show) {
             return null;
         }
-        return <h1>Hello Modal</h1>;
+        return (
+            <div>
+                <div>{this.props.children}</div>
+                <div>
+                    <button onClick={onClose} > Close</button>
+                </div>
+            </div>
+        );
     }
 }
 

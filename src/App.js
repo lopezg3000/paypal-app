@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from './components/navbar';
 import Modal from './components/modal';
 import './App.css';
 
@@ -9,15 +10,21 @@ class App extends Component {
   }
 
   handleShowModal = () => {
-    this.setState({ show: true });
+    const show = !this.state.show;
+
+    this.setState({ show });
   }
 
   render() {
     return (
       <div className="App">
-        <h1>Hello PayPal Homepage</h1>
-        <button onClick={this.handleShowModal}>Show Modal</button>
-        <Modal show={this.state.show} />
+        <Navbar />
+        <div className='show-btn'>
+          <button onClick={this.handleShowModal}>Show Modal</button>
+        </div>
+        <Modal onClose={this.handleShowModal} show={this.state.show}>
+          <h1>Message in Modal</h1>
+        </Modal>
       </div>
     );
   }
