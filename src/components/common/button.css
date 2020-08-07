@@ -14,3 +14,12 @@
     border: 1px dotted #dce3e7;
     margin: 25px 0 20px;
 }
+
+@media only screen and (max-width: 768px) {
+
+    .btn {
+        min-width: 11.3em;
+        padding: .875rem 1.4375rem;
+    }
+
+}

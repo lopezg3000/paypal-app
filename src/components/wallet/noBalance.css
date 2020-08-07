@@ -1,6 +1,12 @@
 .no-balance.container {
     margin: 76px auto 30px;
-    padding: 3em 9px;
+    padding: 3em 9px 9em;
     max-width: 27em;
     text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .no-balance.container {
+        padding: 3em 9px 4em;
+    }
 }
