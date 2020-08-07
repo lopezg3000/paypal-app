@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 
 .App {
   text-align: center;
@@ -10,8 +10,29 @@
   margin: 75px 0 0;
 }
 
-h1, h2, p {
+h1, h2, p, a {
   font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
   font-size: .875rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
   font-weight: 300;
+}
+
+p {
+  font-size: 0.9375rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+a {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
 }

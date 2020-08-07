@@ -1,0 +1,16 @@
+.btn {
+    color: #ffffff;
+    margin: 1.25em 0 0;
+    background-color: #0070ba;
+    border-radius: 1.5rem;
+    border: 0.0625rem solid #0070ba;
+    padding: 0.6875rem 1.4375rem;
+    min-width: 6rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+}
+
+.divider {
+    border: 1px dotted #dce3e7;
+    margin: 25px 0 20px;
+}

@@ -6,7 +6,7 @@ const NavBar = () => {
         <div className='navbar'>
             <div className='navbar-wrapper'>
                 <a className='logo'>
-                    <i class="fab fa-paypal icon"></i>
+                    <i className="fab fa-paypal icon"></i>
                 </a>
                 <nav className='links-container'>
                     <h1 >Wallet</h1>
