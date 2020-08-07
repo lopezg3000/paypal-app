@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .App {
   text-align: center;
 }
@@ -6,4 +8,10 @@
 
 .show-btn {
   margin: 75px 0 0;
+}
+
+h1, h2, p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: .875rem;
+  font-weight: 300;
 }

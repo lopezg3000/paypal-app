@@ -29,6 +29,12 @@
     color: transparent;
 }
 
+/* will have to change nav h1 styles once I create listed items */
+
+nav h1 {
+    padding: 0 .925rem;
+}
+
 .links-container {
     display: inline-block;
 }

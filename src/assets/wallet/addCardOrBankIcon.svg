@@ -1,0 +1,20 @@
+<svg
+    data-testid="addFiLogo"
+    viewBox="0 0 40 44"
+    xmlns="http://www.w3.org/2000/svg"
+    width="164px"
+    height="182px"
+    fill="#2C2E2F">
+    <g fill="none" fillRule="evenodd">
+        <path d="M-1 1h42v42H-1z" />
+        <path
+            d="M30.107 25.781H.897m.075-4.5H30.07m-24.13-4.587l-.916-.72a.743.743 0 0 1-.12-1.05L15.951 1.28a.77.77 0 0 1 1.067-.119l21.83 17.145c.327.256.381.73.12 1.051L30.311 30.13V17.537a.756.756 0 0 0-.76-.748H1.635a.756.756 0 0 0-.76.748L.868 34.991c0 .412.341.748.76.748H15.44c0 4.01 3.298 7.261 7.369 7.261 4.07 0 7.369-3.25 7.369-7.26s-3.3-7.262-7.37-7.262c-2.043 0-3.892.82-5.227 2.143"
+            stroke="#2C2E2F"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        />
+        <g stroke="#2C2E2F" strokeLinecap="round" strokeLinejoin="round">
+            <path d="m27.933 36.055h-8.848m4.363-4.243v9.091" />
+        </g>
+    </g>
+</svg>

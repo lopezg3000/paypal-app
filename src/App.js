@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/navbar';
+import Wallet from './components/wallet/wallet';
 import Modal from './components/modal';
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <Wallet />
         <div className='show-btn'>
           <button onClick={this.handleShowModal}>Show Modal</button>
         </div>
