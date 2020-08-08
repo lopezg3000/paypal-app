@@ -21,12 +21,13 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Wallet />
-        <div className='show-btn'>
+
+        {/* <div className='show-btn'>
           <button onClick={this.handleShowModal}>Show Modal</button>
         </div>
         <Modal onClose={this.handleShowModal} show={this.state.show}>
           <h1>Message in Modal</h1>
-        </Modal>
+        </Modal> */}
       </div>
     );
   }
