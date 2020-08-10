@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import '../common/button.css';
 
-const Button = ({ text }) => {
+const Button = ({ text, linkPath }) => {
     return (
-        <a href='#' className='btn'>
+        <Link to={linkPath} className='btn'>
             {text}
-        </a>
+        </Link>
     );
 }
 

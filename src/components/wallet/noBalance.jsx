@@ -12,10 +12,10 @@ const NoBalanceContainer = () => {
                 <h2>You haven’t linked anything yet</h2>
                 <p>
                     Join the millions of customers who have linked a
-                    card or bank to their PayPal account and use it
+                    card to their PayPal account and use it
                     as a payment method to pay with PayPal
                 </p>
-                <Button text='Link a card or bank' />
+                <Button text='Link a card' linkPath='/myaccount/money/cards/new' />
                 <hr className='divider'></hr>
             </div>
         </div>

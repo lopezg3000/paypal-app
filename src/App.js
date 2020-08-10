@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/navbar';
 import Wallet from './components/wallet/wallet';
+import NewCard from './components/modal/newCard';
 import NotFound from './components/notFound';
 import Modal from './components/modal';
 import './App.css';
@@ -23,9 +24,10 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Switch>
-          <Route path='/wallet' component={Wallet} />
+          <Route path='/myaccount/money/cards/new' component={NewCard} />
+          <Route path='/myaccount/money' exact component={Wallet} />
           <Route path='/notFound' component={NotFound} />
-          <Redirect path='/' exact to='/wallet' />
+          <Redirect path='/' exact to='/myaccount/money' />
           <Redirect to='/notFound' />
         </Switch>
 
