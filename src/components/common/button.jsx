@@ -4,7 +4,10 @@ import '../common/button.css';
 
 const Button = ({ text, linkPath }) => {
     return (
-        <Link to={linkPath} className='btn'>
+        <Link
+            to={linkPath}
+            className='btn'
+        >
             {text}
         </Link>
     );

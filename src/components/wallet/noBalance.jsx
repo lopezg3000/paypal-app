@@ -15,7 +15,10 @@ const NoBalanceContainer = () => {
                     card to their PayPal account and use it
                     as a payment method to pay with PayPal
                 </p>
-                <Button text='Link a card' linkPath='/myaccount/money/cards/new' />
+                <Button
+                    text='Link a card'
+                    linkPath={{ pathname: '/myaccount/money/cards/new', state: { modal: true } }}
+                />
                 <hr className='divider'></hr>
             </div>
         </div>

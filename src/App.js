@@ -7,6 +7,14 @@ import NotFound from './components/notFound';
 import Modal from './components/modal';
 import './App.css';
 
+/*
+Improvements:
+  1. Use local storage to store state and pathname because state and pathname erased when 
+      refreshing page. Initialize previous location to that of the one in the local storage
+  2. I could also use the prompt function in router to let the user know that they
+      will lose their info in form if they refresh
+*/
+
 
 class App extends Component {
   state = {

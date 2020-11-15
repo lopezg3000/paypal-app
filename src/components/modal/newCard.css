@@ -1,0 +1,42 @@
+.wallet.modal-container {
+    background: #f4f6f9;
+    margin-top: 75px;
+
+}
+
+.modal-content {
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.modal-body {
+    border: solid;
+    width: 700px;
+    margin: auto; 
+    /* background: gray;   */
+
+}
+
+.modal-body .form-group {
+    /* padding-bottom: 20px; */
+    border: solid;
+    /* margin: 50px; */
+    height: 100px;
+    /* width: 100%; */
+}
+
+.form-group .form-control {
+    padding: 20px;
+    width: 50%;
+    box-sizing: border-box;
+    text-align: center;
+    /* margin: auto; */
+}
+
+.form-group .overlay {
+    position: absolute;
+    padding: 20px;
+    border: solid;
+    /* margin: auto; */
+    background: white;
+}
