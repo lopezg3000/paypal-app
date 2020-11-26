@@ -29,13 +29,13 @@ class NewCard extends Component {
         return (
             <div className='wallet modal-container'>
                 <div className='modal-content'>
-                    <div>
-                        <img src={PaypalFilledIcon} style={{ width: '40px' }} />
-                    </div>
-                    <div onClick={this.handleCloseModal}>
-                        <i className="fas fa-times"></i>
-                    </div>
                     <header className='modal-header'>
+                        <div>
+                            <img src={PaypalFilledIcon} style={{ width: '40px' }} />
+                        </div>
+                        <div onClick={this.handleCloseModal}>
+                            <i className="fas fa-times"></i>
+                        </div>
                         <h2 className='header-centered'>Link a Card</h2>
                     </header>
                     <div className='modal-body'>
@@ -102,8 +102,8 @@ class NewCard extends Component {
                             </form>
                         </div>
                     </div>
+                    <Button text='Link a card' />
                 </div>
-                <Button text='Link a card' />
             </div>
         );
     }
