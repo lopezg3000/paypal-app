@@ -28,13 +28,13 @@ class NewCard extends Component {
     render() {
         return (
             <div className='wallet modal-container'>
-                <div>
-                    <img src={PaypalFilledIcon} style={{ width: '40px' }} />
-                </div>
-                <div onClick={this.handleCloseModal}>
-                    <i className="fas fa-times"></i>
-                </div>
                 <div className='modal-content'>
+                    <div>
+                        <img src={PaypalFilledIcon} style={{ width: '40px' }} />
+                    </div>
+                    <div onClick={this.handleCloseModal}>
+                        <i className="fas fa-times"></i>
+                    </div>
                     <header className='modal-header'>
                         <h2 className='header-centered'>Link a Card</h2>
                     </header>
