@@ -30,13 +30,11 @@ class NewCard extends Component {
             <div className='wallet modal-container'>
                 <div className='modal-content'>
                     <header className='modal-header'>
-                        <div>
-                            <img src={PaypalFilledIcon} style={{ width: '40px' }} />
+                        <div className='eyebrow'>
+                            <img src={PaypalFilledIcon} />
+                            <div className='close-icon' onClick={this.handleCloseModal}>&times;</div>
                         </div>
-                        <div onClick={this.handleCloseModal}>
-                            <i className="fas fa-times"></i>
-                        </div>
-                        <h2 className='header-centered'>Link a Card</h2>
+                        <h2 className='headline'>Link a Card</h2>
                     </header>
                     <div className='modal-body'>
                         <div className='form-container'>
