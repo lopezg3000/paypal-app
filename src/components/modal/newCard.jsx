@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import Button from '../common/button';
 import PaypalFilledIcon from '../../assets/wallet/paypalFilledIcon.svg';
 import SecurityCodeLogo from '../../assets/wallet/logosWallet.png';
+import sampleCard from '../../assets/wallet/sampleCard.webp';
 import './newCard.css';
 
 class NewCard extends Component {
+    state = {
+        data: [
+            { id: "cardNumber", cardNumber: "", active: false },
+            { id: "cardType", cardType: "", active: false },
+            { id: "expirationDate", expirationDate: "", active: false },
+            { id: "securityCode", securityCode: "", active: false },
+            { id: "billingAddress", billingAddress: "", active: false }
+        ]
+    };
 
     handleCloseModal = () => {
         this.props.history.goBack();
@@ -12,7 +22,44 @@ class NewCard extends Component {
 
     handleSubmit = () => {
         console.log('form submitted');
-    }
+    };
+
+    getInputObject = (id) => {
+        const inputs = [...this.state.data];
+        const index = inputs.findIndex((input) => input.id === id);
+        const input = { ...inputs[index] };
+
+        return input;
+    };
+
+    handleChange = ({ currentTarget: input }) => {
+        const inputs = [...this.state.data];
+        const index = inputs.findIndex((i) => i.id === input.id);
+        inputs[index][input.name] = input.value;
+        this.setState({ inputs });
+
+        this.handleActiveField(input);
+    };
+
+    handleActiveField = (input) => {
+        const inputs = [...this.state.data];
+        const index = inputs.findIndex((i) => i.id === input.id);
+        inputs[index].active = true;
+
+        this.setState({ inputs });
+    };
+
+    handleDisableField = ({ currentTarget: input }) => {
+        const inputs = [...this.state.data];
+        const index = inputs.findIndex((i) => i.id === input.id);
+
+        if (input.value === "") {
+            inputs[index].active = false;
+
+            this.setState({ inputs });
+        }
+    };
+
 
     styles = {
         position: 'absolute',
@@ -26,6 +73,13 @@ class NewCard extends Component {
     }
 
     render() {
+        const { cardNumber, active: cardNumberActive } = this.getInputObject("cardNumber");
+        const { cardType, active: cardTypeActive } = this.getInputObject("cardType");
+        const { expirationDate, active: expirationDateActive } = this.getInputObject("expirationDate");
+        const { securityCode, active: securityCodeActive } = this.getInputObject("securityCode");
+        const { billingAddress, active: billingAddressActive } = this.getInputObject("billingAddress");
+
+
         return (
             <div className='wallet modal-container'>
                 <div className='modal-content'>
@@ -35,26 +89,42 @@ class NewCard extends Component {
                             <div className='close-icon' onClick={this.handleCloseModal}>&times;</div>
                         </div>
                         <h2 className='headline'>Link a Card</h2>
+                        <img className='sample-card' src={sampleCard} />
                     </header>
                     <div className='modal-body'>
                         <div className='form-container'>
                             <form onSubmit={this.handleSubmit}>
                                 <div className='form-group'>
-                                    <label className='overlay' htmlFor='card-number'>Debit or credit card number</label>
+                                    <label
+                                        className={cardNumber ? 'floating-label' : ''}
+                                        htmlFor='cardNumber'
+                                    >
+                                        Debit or credit card number
+                                    </label>
                                     <input
-                                        name='card-number'
-                                        id='card-number'
-                                        type='text'
                                         className='form-control'
-                                        placeholder='Enter Card Number'
+                                        name='cardNumber'
+                                        id='cardNumber'
+                                        value={cardNumber}
+                                        type='text'
+                                        placeholder={cardNumberActive ? "Enter card number" : ""}
+                                        onChange={this.handleChange}
+                                        onFocus={this.handleChange}
+                                        onBlur={this.handleDisableField}
                                     />
                                 </div>
                                 <div className='form-group'>
-                                    <label htmlFor='card-type'>Card type</label>
+                                    <label
+                                        className={cardType ? 'floating-label' : ''}
+                                        htmlFor='cardType'
+                                    >
+                                        Card type
+                                    </label>
                                     <select
-                                        name='card-type'
-                                        id='card-type'
+                                        name='cardType'
+                                        id='cardType'
                                         className='form-control'
+                                    //need to fix the value of the select input
                                     >
                                         <option value='placeholder'>Select your card type</option>
                                         <option value='visa'>Visa</option>
@@ -64,36 +134,63 @@ class NewCard extends Component {
                                     </select>
                                 </div>
                                 <div className='form-group'>
-                                    <label htmlFor='expiration-date'>Expiration date</label>
+                                    <label
+                                        className={expirationDate ? 'floating-label' : ''}
+                                        htmlFor='expirationDate'
+                                    >
+                                        Expiration date
+                                    </label>
                                     <input
-                                        name='expiration-date'
-                                        id='expiration-date'
-                                        type='text'
                                         className='form-control'
-                                        placeholder='mm/yy'
+                                        name='expirationDate'
+                                        value={expirationDate}
+                                        id='expirationDate'
+                                        type='text'
+                                        placeholder={expirationDateActive ? "mm/yy" : ""}
+                                        onChange={this.handleChange}
+                                        onFocus={this.handleChange}
+                                        onBlur={this.handleDisableField}
                                     >
                                     </input>
                                 </div>
                                 <div className='form-group' style={{ position: 'relative' }}>
-                                    <label htmlFor='security-code'>Security code</label>
+                                    <label
+                                        className={securityCode ? 'floating-label' : ''}
+                                        htmlFor='securityCode'
+                                    >
+                                        Security code
+                                    </label>
                                     <input
-                                        name='security-code'
-                                        id='security-code'
-                                        type='text'
                                         className='form-control'
-                                        placeholder='Enter security code'
+                                        name='securityCode'
+                                        id='securityCode'
+                                        value={securityCode}
+                                        type='text'
+                                        placeholder={securityCodeActive ? "Enter security code" : ""}
+                                        onChange={this.handleChange}
+                                        onFocus={this.handleChange}
+                                        onBlur={this.handleDisableField}
                                     >
                                     </input>
                                     <span style={this.styles}></span>
                                 </div>
                                 <div className='form-group'>
-                                    <label htmlFor='billing-address'>Billing Address</label>
+                                    <label
+                                        className={billingAddress ? 'floating-label' : ''}
+                                        htmlFor='billingAddress'
+                                    >
+                                        Billing Address
+                                    </label>
                                     <input
-                                        name='billing-address'
-                                        id='billing-address'
-                                        type='text'
                                         className='form-control'
-                                        placeholder='Enter billing address'
+                                        name='billingAddress'
+                                        value={billingAddress}
+                                        id='billingAddress'
+                                        type='text'
+                                        placeholder={billingAddressActive ? "Enter billing address" : ""}
+                                        onChange={this.handleChange}
+                                        onFocus={this.handleChange}
+                                        onBlur={this.handleDisableField}
                                     >
                                     </input>
                                 </div>
