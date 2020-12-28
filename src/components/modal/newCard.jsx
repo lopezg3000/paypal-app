@@ -35,7 +35,7 @@ class NewCard extends Component {
     handleChange = ({ currentTarget: input }) => {
         const inputs = [...this.state.data];
         const index = inputs.findIndex((i) => i.id === input.id);
-        inputs[index][input.name] = input.value;
+        inputs[index][input.id] = input.value;
         this.setState({ inputs });
 
         this.handleActiveField(input);
@@ -96,7 +96,7 @@ class NewCard extends Component {
                             <form onSubmit={this.handleSubmit}>
                                 <div className='form-group'>
                                     <label
-                                        className={cardNumber ? 'floating-label' : ''}
+                                        className={cardNumberActive ? 'floating-label' : ''}
                                         htmlFor='cardNumber'
                                     >
                                         Debit or credit card number
@@ -115,7 +115,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={cardType ? 'floating-label' : ''}
+                                        className={cardTypeActive ? 'floating-label' : ''}
                                         htmlFor='cardType'
                                     >
                                         Card type
@@ -135,7 +135,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={expirationDate ? 'floating-label' : ''}
+                                        className={expirationDateActive ? 'floating-label' : ''}
                                         htmlFor='expirationDate'
                                     >
                                         Expiration date
@@ -155,7 +155,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group' style={{ position: 'relative' }}>
                                     <label
-                                        className={securityCode ? 'floating-label' : ''}
+                                        className={securityCodeActive ? 'floating-label' : ''}
                                         htmlFor='securityCode'
                                     >
                                         Security code
@@ -176,7 +176,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={billingAddress ? 'floating-label' : ''}
+                                        className={billingAddressActive ? 'floating-label' : ''}
                                         htmlFor='billingAddress'
                                     >
                                         Billing Address

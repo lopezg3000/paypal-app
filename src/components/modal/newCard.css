@@ -57,15 +57,45 @@
     margin: auto; 
 }
 
-.modal-body .form-group {
+/* .modal-body .form-group {
     height: 70px;
-}
+    position: relative;
+} */
 
 .form-group .form-control {
-    padding: 12px;
+    padding: 23px 0px 8px 15px;
     min-width: 320px;
     margin: auto;
     box-sizing: border-box;
-    text-align: center;
-    display: block;
+    border: 1px solid #9da3a6;
+    border-radius: 5px;
+    font-size: 1rem;
+    z-index: 1;
+    background: transparent;
 }
+
+
+/*label styles underneath*/
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    /* Position the label */
+    left: 205px;
+    position: absolute;
+    top: 17px;
+    z-index: 0;
+    transition: all 200ms ease-in-out;
+  }
+  
+  label.floating-label {
+    background: #fff;
+    transform: translate(0, -80%);
+    opacity: 1;
+    z-index: 2;
+    font-size: 0.75rem;
+    color: #009cde;
+  }
