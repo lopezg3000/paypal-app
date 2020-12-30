@@ -35,6 +35,7 @@ class NewCard extends Component {
     handleChange = ({ currentTarget: input }) => {
         const inputs = [...this.state.data];
         const index = inputs.findIndex((i) => i.id === input.id);
+
         inputs[index][input.id] = input.value;
         this.setState({ inputs });
 
@@ -115,7 +116,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={cardTypeActive ? 'floating-label' : ''}
+                                        className={cardTypeActive ? 'floating-label select' : ''}
                                         htmlFor='cardType'
                                     >
                                         Card type
@@ -124,9 +125,15 @@ class NewCard extends Component {
                                         name='cardType'
                                         id='cardType'
                                         className='form-control'
+                                        value={cardType}
+                                        onChange={this.handleChange}
+                                        onFocus={this.handleChange}
+                                        onBlur={this.handleDisableField}
+
+                                    // value=''
                                     //need to fix the value of the select input
                                     >
-                                        <option value='placeholder'>Select your card type</option>
+                                        <option value=''>Select your card type</option>
                                         <option value='visa'>Visa</option>
                                         <option value='mastercard'>MasterCard</option>
                                         <option value='americanExpress'>American Express</option>

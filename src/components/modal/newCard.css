@@ -57,12 +57,14 @@
     margin: auto; 
 }
 
-/* .modal-body .form-group {
-    height: 70px;
-    position: relative;
-} */
+/*form styles underneath*/
 
-.form-group .form-control {
+.modal-body .form-group {
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+.modal-body .form-group .form-control {
     padding: 23px 0px 8px 15px;
     min-width: 320px;
     margin: auto;
@@ -74,28 +76,37 @@
     background: transparent;
 }
 
-
-/*label styles underneath*/
-
-.form-group {
-    position: relative;
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
+.modal-body .form-group label {
     /* Position the label */
     left: 205px;
     position: absolute;
     top: 17px;
     z-index: 0;
     transition: all 200ms ease-in-out;
-  }
+}
+
+.modal-body .form-group:nth-child(2) label {
+    top: 5px;
+    font-size: .75rem;
+}
+
+.modal-body .form-group select {
+    appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+}
   
-  label.floating-label {
+.modal-body label.floating-label {
     background: #fff;
     transform: translate(0, -80%);
     opacity: 1;
     z-index: 2;
     font-size: 0.75rem;
     color: #009cde;
-  }
+}
+
+.modal-body label.floating-label.select {
+    /* top: 5px; */
+    transform: none;
+}
