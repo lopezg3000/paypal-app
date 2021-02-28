@@ -20,7 +20,8 @@ class NewCard extends Component {
         this.props.history.goBack();
     };
 
-    handleSubmit = () => {
+    handleSubmit = e => {
+        e.preventDefault();
         console.log('form submitted');
     };
 
