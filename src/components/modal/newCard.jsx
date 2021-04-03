@@ -25,20 +25,12 @@ class NewCard extends Component {
         console.log('form submitted');
     };
 
-    // getInputObject = (id) => {
-    //     const inputs = [...this.state.data];
-    //     const index = inputs.findIndex((input) => input.id === id);
-    //     const input = { ...inputs[index] };
-
-    //     return input;
-    // };
-
     handleChange = ({ currentTarget: input }) => {
-        console.log(input);
         const inputs = [...this.state.data];
         const index = inputs.findIndex((i) => i.id === input.id);
 
         inputs[index].value = input.value;
+
         this.setState({ inputs });
 
         this.handleActiveField(input);
@@ -63,6 +55,16 @@ class NewCard extends Component {
         }
     };
 
+    insertDash(date) {
+        if (date) {
+            const dateClone = date.split('/').join('');
+            const formattedDate = dateClone.match(/.{1,2}/g).join('/');
+
+            return formattedDate;
+        }
+
+        return date;
+    };
 
     styles = {
         position: 'absolute',
@@ -76,16 +78,7 @@ class NewCard extends Component {
     }
 
     render() {
-        // const { cardNumber, active: cardNumberActive } = this.getInputObject("cardNumber");
-        // const { cardType, active: cardTypeActive } = this.getInputObject("cardType");
-        // const { expirationDate, active: expirationDateActive } = this.getInputObject("expirationDate");
-        // const { securityCode, active: securityCodeActive } = this.getInputObject("securityCode");
-        // const { billingAddress, active: billingAddressActive } = this.getInputObject("billingAddress");
         const [cardNumber, cardType, expirationDate, securityCode, billingAddress] = this.state.data;
-
-        console.log(cardNumber);
-
-
 
         return (
             <div className='wallet modal-container'>
@@ -156,7 +149,7 @@ class NewCard extends Component {
                                     <input
                                         className='form-control'
                                         name='expirationDate'
-                                        value={expirationDate.value}
+                                        value={this.insertDash(expirationDate.value)}
                                         id='expirationDate'
                                         type='text'
                                         placeholder={expirationDate.active ? "mm/yy" : ""}
