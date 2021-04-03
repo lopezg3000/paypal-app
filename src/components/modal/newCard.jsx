@@ -8,11 +8,11 @@ import './newCard.css';
 class NewCard extends Component {
     state = {
         data: [
-            { id: "cardNumber", cardNumber: "", active: false },
-            { id: "cardType", cardType: "", active: false },
-            { id: "expirationDate", expirationDate: "", active: false },
-            { id: "securityCode", securityCode: "", active: false },
-            { id: "billingAddress", billingAddress: "", active: false }
+            { id: "cardNumber", value: "", active: false },
+            { id: "cardType", value: "", active: false },
+            { id: "expirationDate", value: "", active: false },
+            { id: "securityCode", value: "", active: false },
+            { id: "billingAddress", value: "", active: false }
         ]
     };
 
@@ -25,19 +25,20 @@ class NewCard extends Component {
         console.log('form submitted');
     };
 
-    getInputObject = (id) => {
-        const inputs = [...this.state.data];
-        const index = inputs.findIndex((input) => input.id === id);
-        const input = { ...inputs[index] };
+    // getInputObject = (id) => {
+    //     const inputs = [...this.state.data];
+    //     const index = inputs.findIndex((input) => input.id === id);
+    //     const input = { ...inputs[index] };
 
-        return input;
-    };
+    //     return input;
+    // };
 
     handleChange = ({ currentTarget: input }) => {
+        console.log(input);
         const inputs = [...this.state.data];
         const index = inputs.findIndex((i) => i.id === input.id);
 
-        inputs[index][input.id] = input.value;
+        inputs[index].value = input.value;
         this.setState({ inputs });
 
         this.handleActiveField(input);
@@ -75,11 +76,15 @@ class NewCard extends Component {
     }
 
     render() {
-        const { cardNumber, active: cardNumberActive } = this.getInputObject("cardNumber");
-        const { cardType, active: cardTypeActive } = this.getInputObject("cardType");
-        const { expirationDate, active: expirationDateActive } = this.getInputObject("expirationDate");
-        const { securityCode, active: securityCodeActive } = this.getInputObject("securityCode");
-        const { billingAddress, active: billingAddressActive } = this.getInputObject("billingAddress");
+        // const { cardNumber, active: cardNumberActive } = this.getInputObject("cardNumber");
+        // const { cardType, active: cardTypeActive } = this.getInputObject("cardType");
+        // const { expirationDate, active: expirationDateActive } = this.getInputObject("expirationDate");
+        // const { securityCode, active: securityCodeActive } = this.getInputObject("securityCode");
+        // const { billingAddress, active: billingAddressActive } = this.getInputObject("billingAddress");
+        const [cardNumber, cardType, expirationDate, securityCode, billingAddress] = this.state.data;
+
+        console.log(cardNumber);
+
 
 
         return (
@@ -98,7 +103,7 @@ class NewCard extends Component {
                             <form onSubmit={this.handleSubmit}>
                                 <div className='form-group'>
                                     <label
-                                        className={cardNumberActive ? 'floating-label' : ''}
+                                        className={cardNumber.active ? 'floating-label' : ''}
                                         htmlFor='cardNumber'
                                     >
                                         Debit or credit card number
@@ -107,9 +112,9 @@ class NewCard extends Component {
                                         className='form-control'
                                         name='cardNumber'
                                         id='cardNumber'
-                                        value={cardNumber}
+                                        value={cardNumber.value}
                                         type='text'
-                                        placeholder={cardNumberActive ? "Enter card number" : ""}
+                                        placeholder={cardNumber.active ? "Enter card number" : ""}
                                         onChange={this.handleChange}
                                         onFocus={this.handleChange}
                                         onBlur={this.handleDisableField}
@@ -117,7 +122,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={cardTypeActive ? 'floating-label select' : ''}
+                                        className={cardType.active ? 'floating-label select' : ''}
                                         htmlFor='cardType'
                                     >
                                         Card type
@@ -126,7 +131,7 @@ class NewCard extends Component {
                                         name='cardType'
                                         id='cardType'
                                         className='form-control'
-                                        value={cardType}
+                                        value={cardType.value}
                                         onChange={this.handleChange}
                                         onFocus={this.handleChange}
                                         onBlur={this.handleDisableField}
@@ -143,7 +148,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={expirationDateActive ? 'floating-label' : ''}
+                                        className={expirationDate.active ? 'floating-label' : ''}
                                         htmlFor='expirationDate'
                                     >
                                         Expiration date
@@ -151,10 +156,10 @@ class NewCard extends Component {
                                     <input
                                         className='form-control'
                                         name='expirationDate'
-                                        value={expirationDate}
+                                        value={expirationDate.value}
                                         id='expirationDate'
                                         type='text'
-                                        placeholder={expirationDateActive ? "mm/yy" : ""}
+                                        placeholder={expirationDate.active ? "mm/yy" : ""}
                                         onChange={this.handleChange}
                                         onFocus={this.handleChange}
                                         onBlur={this.handleDisableField}
@@ -163,7 +168,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group' style={{ position: 'relative' }}>
                                     <label
-                                        className={securityCodeActive ? 'floating-label' : ''}
+                                        className={securityCode.active ? 'floating-label' : ''}
                                         htmlFor='securityCode'
                                     >
                                         Security code
@@ -172,9 +177,9 @@ class NewCard extends Component {
                                         className='form-control'
                                         name='securityCode'
                                         id='securityCode'
-                                        value={securityCode}
+                                        value={securityCode.value}
                                         type='text'
-                                        placeholder={securityCodeActive ? "Enter security code" : ""}
+                                        placeholder={securityCode.active ? "Enter security code" : ""}
                                         onChange={this.handleChange}
                                         onFocus={this.handleChange}
                                         onBlur={this.handleDisableField}
@@ -184,7 +189,7 @@ class NewCard extends Component {
                                 </div>
                                 <div className='form-group'>
                                     <label
-                                        className={billingAddressActive ? 'floating-label' : ''}
+                                        className={billingAddress.active ? 'floating-label' : ''}
                                         htmlFor='billingAddress'
                                     >
                                         Billing Address
@@ -192,10 +197,10 @@ class NewCard extends Component {
                                     <input
                                         className='form-control'
                                         name='billingAddress'
-                                        value={billingAddress}
+                                        value={billingAddress.value}
                                         id='billingAddress'
                                         type='text'
-                                        placeholder={billingAddressActive ? "Enter billing address" : ""}
+                                        placeholder={billingAddress.active ? "Enter billing address" : ""}
                                         onChange={this.handleChange}
                                         onFocus={this.handleChange}
                                         onBlur={this.handleDisableField}
