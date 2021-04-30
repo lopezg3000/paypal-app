@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../common/button';
+import Input from '../common/input';
 import PaypalFilledIcon from '../../assets/wallet/paypalFilledIcon.svg';
 import SecurityCodeLogo from '../../assets/wallet/logosWallet.png';
 import sampleCard from '../../assets/wallet/sampleCard.webp';
@@ -94,25 +95,16 @@ class NewCard extends Component {
                     <div className='modal-body'>
                         <div className='form-container'>
                             <form onSubmit={this.handleSubmit}>
-                                <div className='form-group'>
-                                    <label
-                                        className={cardNumber.active ? 'floating-label' : ''}
-                                        htmlFor='cardNumber'
-                                    >
-                                        Debit or credit card number
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        name='cardNumber'
-                                        id='cardNumber'
-                                        value={cardNumber.value}
-                                        type='text'
-                                        placeholder={cardNumber.active ? "Enter card number" : ""}
-                                        onChange={this.handleChange}
-                                        onFocus={this.handleChange}
-                                        onBlur={this.handleDisableField}
-                                    />
-                                </div>
+                                <Input
+                                    name='cardNumber'
+                                    label='Debit or credit card number'
+                                    value={cardNumber.value}
+                                    placeholderText='Enter card number'
+                                    active={cardNumber.active}
+                                    onChange={this.handleChange}
+                                    onFocus={this.handleChange}
+                                    onBlur={this.handleDisableField}
+                                />
                                 <div className='form-group'>
                                     <label
                                         className={cardType.active ? 'floating-label select' : ''}
@@ -139,48 +131,38 @@ class NewCard extends Component {
                                         <option value='discover'>Discover</option>
                                     </select>
                                 </div>
-                                <div className='form-group'>
-                                    <label
-                                        className={expirationDate.active ? 'floating-label' : ''}
-                                        htmlFor='expirationDate'
-                                    >
-                                        Expiration date
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        name='expirationDate'
-                                        value={this.insertDash(expirationDate.value)}
-                                        id='expirationDate'
-                                        type='text'
-                                        placeholder={expirationDate.active ? "mm/yy" : ""}
-                                        onChange={this.handleChange}
-                                        onFocus={this.handleChange}
-                                        onBlur={this.handleDisableField}
-                                    >
-                                    </input>
-                                </div>
-                                <div className='form-group' style={{ position: 'relative' }}>
-                                    <label
-                                        className={securityCode.active ? 'floating-label' : ''}
-                                        htmlFor='securityCode'
-                                    >
-                                        Security code
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        name='securityCode'
-                                        id='securityCode'
-                                        value={securityCode.value}
-                                        type='text'
-                                        placeholder={securityCode.active ? "Enter security code" : ""}
-                                        onChange={this.handleChange}
-                                        onFocus={this.handleChange}
-                                        onBlur={this.handleDisableField}
-                                    >
-                                    </input>
-                                    <span style={this.styles}></span>
-                                </div>
-                                <div className='form-group'>
+                                <Input
+                                    name='expirationDate'
+                                    label='Expiration date'
+                                    value={this.insertDash(expirationDate.value)}
+                                    placeholderText='mm/yy'
+                                    active={expirationDate.active}
+                                    onChange={this.handleChange}
+                                    onFocus={this.handleChange}
+                                    onBlur={this.handleDisableField}
+                                />
+                                <Input
+                                    name='securityCode'
+                                    label='Security code'
+                                    value={securityCode.value}
+                                    placeholderText='Enter security code'
+                                    active={securityCode.active}
+                                    onChange={this.handleChange}
+                                    onFocus={this.handleChange}
+                                    onBlur={this.handleDisableField}
+                                />
+                                <Input
+                                    name='billingAddress'
+                                    label='Billing Address'
+                                    value={billingAddress.value}
+                                    placeholderText='Enter billing address'
+                                    active={billingAddress.active}
+                                    onChange={this.handleChange}
+                                    onFocus={this.handleChange}
+                                    onBlur={this.handleDisableField}
+                                />
+
+                                {/* <div className='form-group'>
                                     <label
                                         className={billingAddress.active ? 'floating-label' : ''}
                                         htmlFor='billingAddress'
@@ -199,7 +181,7 @@ class NewCard extends Component {
                                         onBlur={this.handleDisableField}
                                     >
                                     </input>
-                                </div>
+                                </div> */}
                             </form>
                         </div>
                     </div>
@@ -211,3 +193,28 @@ class NewCard extends Component {
 }
 
 export default NewCard;
+
+
+//Need to figure out how to add security logo
+{/*      
+<div className='form-group' style={{ position: 'relative' }}>
+    <label
+        className={securityCode.active ? 'floating-label' : ''}
+        htmlFor='securityCode'
+    >
+        Security code
+    </label>
+    <input
+        className='form-control'
+        name='securityCode'
+        id='securityCode'
+        value={securityCode.value}
+        type='text'
+        placeholder={securityCode.active ? "Enter security code" : ""}
+        onChange={this.handleChange}
+        onFocus={this.handleChange}
+        onBlur={this.handleDisableField}
+    >
+    </input>
+    <span style={this.styles}></span>
+</div> */}
