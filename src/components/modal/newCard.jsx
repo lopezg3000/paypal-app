@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Joi from 'joi';
 import Button from '../common/button';
 import Input from '../common/input';
 import PaypalFilledIcon from '../../assets/wallet/paypalFilledIcon.svg';
@@ -14,8 +15,21 @@ class NewCard extends Component {
             { id: "expirationDate", value: "", active: false },
             { id: "securityCode", value: "", active: false },
             { id: "billingAddress", value: "", active: false }
-        ]
+        ],
+        errors: []
     };
+
+    // schema = Joi.object({
+    //     data: Joi.array().items(
+    //         Joi.object({
+    //             value: Joi.number().required()
+    //         })
+    //     )
+    // });
+
+    // validate = () => {
+    //     this.schema.validate(this.state.data);
+    // }
 
     handleCloseModal = () => {
         this.props.history.goBack();
@@ -79,7 +93,8 @@ class NewCard extends Component {
     }
 
     render() {
-        const [cardNumber, cardType, expirationDate, securityCode, billingAddress] = this.state.data;
+        const { data, errors } = this.state;
+        const [cardNumber, cardType, expirationDate, securityCode, billingAddress] = data;
 
         return (
             <div className='wallet modal-container'>
@@ -104,6 +119,7 @@ class NewCard extends Component {
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
+                                    errors={errors.cardNumber}
                                 />
                                 <div className='form-group'>
                                     <label
@@ -161,27 +177,6 @@ class NewCard extends Component {
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
                                 />
-
-                                {/* <div className='form-group'>
-                                    <label
-                                        className={billingAddress.active ? 'floating-label' : ''}
-                                        htmlFor='billingAddress'
-                                    >
-                                        Billing Address
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        name='billingAddress'
-                                        value={billingAddress.value}
-                                        id='billingAddress'
-                                        type='text'
-                                        placeholder={billingAddress.active ? "Enter billing address" : ""}
-                                        onChange={this.handleChange}
-                                        onFocus={this.handleChange}
-                                        onBlur={this.handleDisableField}
-                                    >
-                                    </input>
-                                </div> */}
                             </form>
                         </div>
                     </div>

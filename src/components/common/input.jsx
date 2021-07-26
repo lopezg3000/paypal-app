@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = ({ name, label, active, placeholderText, ...rest }) => {
+const Input = ({ name, label, active, placeholderText, error, ...rest }) => {
     return (
         <div className='form-group'>
             <label
@@ -17,6 +17,7 @@ const Input = ({ name, label, active, placeholderText, ...rest }) => {
                 type='text'
                 placeholder={active ? placeholderText : ""}
             />
+            {error && <div>{error}</div>}
         </div>
     );
 }
