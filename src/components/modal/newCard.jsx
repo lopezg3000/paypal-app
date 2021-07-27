@@ -9,27 +9,24 @@ import './newCard.css';
 
 class NewCard extends Component {
     state = {
-        data: [
-            { id: "cardNumber", value: "", active: false },
-            { id: "cardType", value: "", active: false },
-            { id: "expirationDate", value: "", active: false },
-            { id: "securityCode", value: "", active: false },
-            { id: "billingAddress", value: "", active: false }
-        ],
-        errors: []
+        fieldsActive: {
+            cardNumber: false,
+            cardType: false,
+            expirationDate: false,
+            securityCode: false,
+            billingAddress: false
+        },
+        data: {
+            _id: '',
+            cardNumber: '',
+            cardType: '',
+            expirationDate: '',
+            securityCode: '',
+            billingAddress: ''
+        },
+        errors: {}
     };
 
-    // schema = Joi.object({
-    //     data: Joi.array().items(
-    //         Joi.object({
-    //             value: Joi.number().required()
-    //         })
-    //     )
-    // });
-
-    // validate = () => {
-    //     this.schema.validate(this.state.data);
-    // }
 
     handleCloseModal = () => {
         this.props.history.goBack();
