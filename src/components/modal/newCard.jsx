@@ -38,32 +38,28 @@ class NewCard extends Component {
     };
 
     handleChange = ({ currentTarget: input }) => {
-        const inputs = [...this.state.data];
-        const index = inputs.findIndex((i) => i.id === input.id);
+        const data = { ...this.state.data };
+        data[input.name] = input.value;
 
-        inputs[index].value = input.value;
+        this.setState({ data });
 
-        this.setState({ inputs });
-
-        this.handleActiveField(input);
+        this.handleActiveField(input.name);
     };
 
-    handleActiveField = (input) => {
-        const inputs = [...this.state.data];
-        const index = inputs.findIndex((i) => i.id === input.id);
-        inputs[index].active = true;
+    handleActiveField = (name) => {
+        const fieldsActive = { ...this.state.fieldsActive };
+        fieldsActive[name] = true;
 
-        this.setState({ inputs });
+        this.setState({ fieldsActive });
     };
 
     handleDisableField = ({ currentTarget: input }) => {
-        const inputs = [...this.state.data];
-        const index = inputs.findIndex((i) => i.id === input.id);
+        const fieldsActive = { ...this.state.fieldsActive };
 
         if (input.value === "") {
-            inputs[index].active = false;
+            fieldsActive[input.name] = false;
 
-            this.setState({ inputs });
+            this.setState({ fieldsActive });
         }
     };
 
