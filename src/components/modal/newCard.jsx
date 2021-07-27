@@ -90,8 +90,7 @@ class NewCard extends Component {
     }
 
     render() {
-        const { data, errors } = this.state;
-        const [cardNumber, cardType, expirationDate, securityCode, billingAddress] = data;
+        const { fieldsActive, data } = this.state;
 
         return (
             <div className='wallet modal-container'>
@@ -110,17 +109,17 @@ class NewCard extends Component {
                                 <Input
                                     name='cardNumber'
                                     label='Debit or credit card number'
-                                    value={cardNumber.value}
+                                    value={data.cardNumber}
                                     placeholderText='Enter card number'
-                                    active={cardNumber.active}
+                                    active={fieldsActive.cardNumber}
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
-                                    errors={errors.cardNumber}
+                                // errors={errors.cardNumber}
                                 />
                                 <div className='form-group'>
                                     <label
-                                        className={cardType.active ? 'floating-label select' : ''}
+                                        className={fieldsActive.cardType ? 'floating-label select' : ''}
                                         htmlFor='cardType'
                                     >
                                         Card type
@@ -129,7 +128,7 @@ class NewCard extends Component {
                                         name='cardType'
                                         id='cardType'
                                         className='form-control'
-                                        value={cardType.value}
+                                        value={data.cardType}
                                         onChange={this.handleChange}
                                         onFocus={this.handleChange}
                                         onBlur={this.handleDisableField}
@@ -147,9 +146,9 @@ class NewCard extends Component {
                                 <Input
                                     name='expirationDate'
                                     label='Expiration date'
-                                    value={this.insertDash(expirationDate.value)}
+                                    value={this.insertDash(data.expirationDate)}
                                     placeholderText='mm/yy'
-                                    active={expirationDate.active}
+                                    active={fieldsActive.expirationDate}
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
@@ -157,9 +156,9 @@ class NewCard extends Component {
                                 <Input
                                     name='securityCode'
                                     label='Security code'
-                                    value={securityCode.value}
+                                    value={data.securityCode}
                                     placeholderText='Enter security code'
-                                    active={securityCode.active}
+                                    active={fieldsActive.securityCode}
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
@@ -167,9 +166,9 @@ class NewCard extends Component {
                                 <Input
                                     name='billingAddress'
                                     label='Billing Address'
-                                    value={billingAddress.value}
+                                    value={data.billingAddress}
                                     placeholderText='Enter billing address'
-                                    active={billingAddress.active}
+                                    active={fieldsActive.billingAddress}
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
