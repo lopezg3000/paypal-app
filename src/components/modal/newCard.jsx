@@ -17,7 +17,6 @@ class NewCard extends Component {
             billingAddress: false
         },
         data: {
-            _id: '',
             cardNumber: '',
             cardType: '',
             expirationDate: '',
@@ -32,8 +31,29 @@ class NewCard extends Component {
         this.props.history.goBack();
     };
 
+    validate = () => {
+        const errors = {};
+
+        const { data } = this.state;
+        if (data.cardNumber.trim() === "")
+            errors.cardNumber = 'Card Number is required';
+
+        if (data.expirationDate.trim() === "")
+            errors.expirationDate = 'Expiration Date is required';
+
+        return Object.keys(errors).length === 0 ? null : errors;
+    }
+
     handleSubmit = e => {
         e.preventDefault();
+
+        const errors = this.validate();
+        console.log(errors);
+        this.setState({ errors: errors || {} });
+        if (errors) return;
+
+        //Call the server
+
         console.log('form submitted');
     };
 
@@ -86,7 +106,7 @@ class NewCard extends Component {
     }
 
     render() {
-        const { fieldsActive, data } = this.state;
+        const { fieldsActive, data, errors } = this.state;
 
         return (
             <div className='wallet modal-container'>
@@ -111,6 +131,7 @@ class NewCard extends Component {
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
+                                    error={errors.cardNumber}
                                 // errors={errors.cardNumber}
                                 />
                                 <div className='form-group'>
@@ -148,6 +169,7 @@ class NewCard extends Component {
                                     onChange={this.handleChange}
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
+                                    error={errors.expirationDate}
                                 />
                                 <Input
                                     name='securityCode'
@@ -169,6 +191,7 @@ class NewCard extends Component {
                                     onFocus={this.handleChange}
                                     onBlur={this.handleDisableField}
                                 />
+                                <input type='submit' text='submit' />
                             </form>
                         </div>
                     </div>
